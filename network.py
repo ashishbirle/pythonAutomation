@@ -6,12 +6,10 @@ import socket
 
 def check_localhost():
     localhost = socket.gethostbyname('localhost')
-    return localhost
+    return str(localhost) == '127.0.0.1'
 
 def check_connectivity():
     request = requests.get("https://www.google.com")
-    return str(request)
+    code = request.status_code
+    return code == 200
 
-
-print(check_localhost())
-print(check_connectivity())
